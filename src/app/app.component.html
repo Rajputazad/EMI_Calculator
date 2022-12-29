@@ -38,7 +38,7 @@
           <p> Loan Tenure</p> 
             <div>
               <mat-form-field appearance="fill">
-                <mat-label>Input</mat-label>
+                <mat-label>Loan Tenure</mat-label>
                 <input value={{Loan_Tenure}} (input)="Loan(Loa1.value)" #Loa1 matInput>
               </mat-form-field>
             </div>
@@ -56,5 +56,30 @@
 </div><br>
 <div class="flex" >
   <h2> ₹ EMI Calculated : {{emi}}</h2>
-  <h2>Total Interest : {{Interest}}</h2>
-</div>
+  <h2> ₹ Total Interest : {{Interest}}</h2>
+</div><br>
+<div class="flex">
+<button mat-stroked-button (click)="Show()" >get</button>
+</div><br>
+<div class="flex">
+  <table id="customers" >
+    <thead>
+      <tr class="table100-head">
+        <th class="column1">Installment No.</th>
+        <th class="column2">EMI Amount</th>
+        <th class="column3">Principal Amount</th>
+        <th class="column4">Interest Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let data of data" >
+  <tr>
+  <td class="column1">{{data.Months}}</td>
+  <td class="column2">{{data.Emi}}</td>
+  <td class="column3">{{data.amount}}</td>
+  <td class="column4">{{data.intrest}}</td>
+  </tr>
+</ng-container>
+  </tbody>
+  </table>
+  </div>

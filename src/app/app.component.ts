@@ -44,6 +44,7 @@ export class AppComponent {
     this.EMI_Calculated = Math.round(
       (p * r * (1 + r) ** n) / ((1 + r) ** n - 1)
     );
+  // this.table
     return Math.round((p * r * (1 + r) ** n) / ((1 + r) ** n - 1));
   }
 
@@ -55,5 +56,41 @@ get Interest(){
  return intr
 }
 
-  ngOnInit(): void {}
+data:any;
+ get table(){
+ let  tb:any=[]
+  let n = this.Loan_Tenure * 12;
+  let total= this.EMI_Calculated*n
+  let r = (this.Annual_Rate_of_Interest / 12 / 100);
+
+  for(let i=1;i<=n;i++ ){
+    total= total-this.EMI_Calculated
+    let intr=Math.round(total*r)
+let data={
+  Emi:this.EMI_Calculated,
+  Months:i,
+  amount:total,
+  intrest:intr
+}
+    tb.push(data)
+  }
+  // console.log(tb);
+  this.data=tb
+  // console.log(this.data);
+  return n
+}
+
+Show(){
+
+  this.table
+}
+
+  ngOnInit(): void {
+    // console.log(this.tble);
+    // this.table
+  }
+  ngAfterViewInit(){
+    this.table
+
+  }
 }
