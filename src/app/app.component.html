@@ -1,0 +1,60 @@
+<div class="grid">
+  <div class="col-12 lg:col-6 xl:col-3">
+    <div class="card mb-0">
+      <h1>EMI Calculator</h1>
+      <div class="flex"  >
+        <div id="css" class=".simplebar-content" >
+          <div  >
+          <p> Principal</p> 
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Principal</mat-label>
+                <input value={{principal}}  (input)="Principal(Amount.value)"  #Amount  matInput>
+              </mat-form-field>
+            </div>
+          </div>
+        <span>₹</span> 
+          <mat-slider min="100000" max="25000000" step="100000" #i   showTickMarks discrete [displayWith]="Principal" >
+            <input (input)="Principal(gridsize.value)" value={{Amount.value}}  #gridsize matSliderThumb>
+          </mat-slider>
+        </div>
+        <div id="css" class=".simplebar-content" >
+          <div  >
+          <p> Annual Rate of Interest</p> 
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Annual Rate of Interest</mat-label>
+                <input value={{Annual_Rate_of_Interest}} (input)="Annual(pr1.value)" #pr1 matInput>
+              </mat-form-field>
+            </div>
+          </div>
+          <span>%</span>
+          <mat-slider min="4" max="24" step="0.1"  (change)="Annual(pr.value)" showTickMarks discrete [displayWith]="Annual">
+            <input (input)="Annual(pr.value)"  value={{pr1.value}}  #pr matSliderThumb>
+          </mat-slider>
+        </div>
+        <div id="css" class=".simplebar-content" >
+          <div  >
+          <p> Loan Tenure</p> 
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Input</mat-label>
+                <input value={{Loan_Tenure}} (input)="Loan(Loa1.value)" #Loa1 matInput>
+              </mat-form-field>
+            </div>
+          </div>
+          <span>📅</span>
+          <mat-slider min="1" max="55" step="1"  showTickMarks discrete [displayWith]="Loan">
+            <input (input)="Loan(Loa.value)"  value={{Loa1.value}} #Loa matSliderThumb>
+          </mat-slider>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div><br>
+<div class="flex" >
+  <h2> ₹ EMI Calculated : {{emi}}</h2>
+  <h2>Total Interest : {{Interest}}</h2>
+</div>
